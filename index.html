@@ -84,10 +84,10 @@ fetch("https://discord.com/api/guilds/1444195211449340070/widget.json")
 
 		<hr>
 		<a name="message"></a>
-		<font size="4"><b>send a message to the discord server (works now)</b></font><br>
-		Name: <input type="text" id="nameInput" placeholder="Name"><br>
-		Message: <input type="text" id="messageInput" placeholder="Message" size="32"><br>
-		<button id="sendBtn" style="width:61px;height:24px">Send</button>
+		<font size="4"><b>send a message to the discord server</b></font><br>
+		Name: <input type="text" id="nameInput" placeholder="name"><br>
+		Message: <input type="text" id="messageInput" placeholder="mesage" size="32"><br>
+		<button id="sendBtn" style="width:61px;height:24px">sed</button>
 		<br>
 		<div id="status"></div>
 
@@ -102,12 +102,12 @@ fetch("https://discord.com/api/guilds/1444195211449340070/widget.json")
 		  const message = document.getElementById("messageInput").value.trim();
 
 		  if (!name || !message) {
-			status.textContent = "bro put something in the boxes";
+			status.textContent = "ar yu faccing domb";
 			return;
 		  }
 
 		  sendBtn.disabled = true;
-		  status.textContent = "Sending...";
+		  status.textContent = "sendig";
 
 		  try {
 			const res = await fetch("https://discordwebhookthing.sabisa-358.workers.dev", {
