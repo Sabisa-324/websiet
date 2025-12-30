@@ -1,30 +1,166 @@
-<!doctype html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <title>h</title>
-        <link rel="stylesheet" href="style.css" />
-    </head>
-    <body>
-    <center>
-        <h1>epic sabisa website</h1>
-        <p>i make random shit</p>
-        <p>some stuff might be ilegal idk</p>
-        <p>pls don dmca me thx</p>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>BOTER DOG ENTERPRICES INC</title>
+	<!--mstheme--><link rel="stylesheet" href="sky1111.css">
+	<meta name="Microsoft Theme" content="sky 1111">
+</head>
 
-        <p><a href="https://bonfire.sabisa.qzz.io">bonfire <b>(in development, migh be down)</b></b></a></p>
-        <p><a href="https://i.sabisa.qzz.io">images</a></p>
-        <p>
-            <a href="https://gemdation.sabisa.qzz.io"
-                >gemdation.com rehost xdddddddd (very broke)</a
-            >
-        </p>
+<body>
 
-        <p>
-            dis hosted on github pages until i decide it wil no longer be hostd
-            on girhub page
-        </p>
-        <p>COPYRIGHT 1932 BOTER DOG INCORPORATED</p>
-    </center>
-    </body>
+<center>
+  <font face="Times New Roman" size="6"><b>BOTER DOG ENTERPRISES INCORPORATED.</b></font><br>
+  <font  size="3"><i>the most amazing, of all time </i></font>
+
+
+<hr width="90%">
+	<div align="center">
+<table width="92%" cellpadding="10" cellspacing="0" border="0">
+  <tr valign="top">
+    <td width="12%"  valign="top">
+      <font size="3">
+        <b>Navigation</b><br><br>
+        <a href="#about">About</a><br><br>
+        <a href="#services">Services</a><br><br>
+		<a href="#message">Send a Message</a><br><br>
+        <a href="#contact">Contact</a><br><br>
+        <hr>
+        <b>Discord</b><br><br>
+        <div id="discord-widget"><font size="2">loading widget</font></div>
+		<script>
+fetch("https://discord.com/api/guilds/1444195211449340070/widget.json")
+.then(r=>r.json())
+.then(d=>{
+  var thething = d.presence_count - 2;
+  if (thething < 0) thething = 0;
+  var h = "<font  size='3'>" + "Online: " + thething + "<br><br>";
+
+  d.members.forEach(m => {
+    if (m.username === "LevelingBot" || m.username === "Sapphire") return;
+
+    h += "<img src='" + m.avatar_url + "' width='16' height='16'> " + m.username + "<br>";
+  });
+
+  document.getElementById("discord-widget").innerHTML = h;
+});
+</script>
+		<br>bots removed*      </font>    </td>
+
+    <td width="86%">
+      <a name="about"></a>
+      <font size="4"><b>about boter dog enterprises incorporated</b></font>
+      <p>
+        <font size="3">
+          BOTER DOG enterprises INCORPORATED BEST COMPANY EVER MADE<br>
+		  mostly jus random shet i make<br>
+		  my plan is to recreate everything<br>
+		  migh be fun<br>
+		  <a href="https://discord.gg/2SndKkpJ3v" target="_blank">
+		  ples join BOTER DOG ENTERPRISES INCORPORATED discor server		</a>        </font>      </p>
+
+      <hr>
+
+
+      <a name="services"></a>
+      <font size="6"><b>the good stuff</b></font>
+      <p>
+        <font size="4">
+          ples note dat if bonfire aint done none of these services will be online<br>
+          <b>to save energy and de environment</b>        </font>      </p>
+
+      <table width="1096" height="320" border="1" cellpadding="6" cellspacing="0">
+        <tr>
+          <td width="418" align="center">
+            <img src="bonfire.png" width="432" height="238"><br>
+            <font  size="2"><b>bonfire</b><br>THE BEST DISCORD CLONE EVER MADE</font>          </td>
+          <td align="center">
+            <img src="images.png" width="420" height="248"><br>
+            <font  size="2"><b>"images"</b><br>idek jus site wit images (doesn hav a name)</font>          </td>
+          <td width="213" align="center">
+            <img src="gemdation.png" width="436" height="237"><br>
+            <font size="2"><b>gemdation.com rehost</b><br>everything broke</font>          </td>
+        </tr>
+      </table>
+
+		<hr>
+		<a name="message"></a>
+		<font size="4"><b>send a message to the discord server (works now)</b></font><br>
+		Name: <input type="text" id="nameInput" placeholder="Name"><br>
+		Message: <input type="text" id="messageInput" placeholder="Message" size="32"><br>
+		<button id="sendBtn" style="width:61px;height:24px">Send</button>
+		<br>
+		<div id="status"></div>
+
+		<script>
+		const sendBtn = document.getElementById("sendBtn");
+		const status = document.getElementById("status");
+
+		sendBtn.addEventListener("click", async (e) => {
+		  e.preventDefault();
+
+		  const name = document.getElementById("nameInput").value.trim();
+		  const message = document.getElementById("messageInput").value.trim();
+
+		  if (!name || !message) {
+			status.textContent = "bro put something in the boxes";
+			return;
+		  }
+
+		  sendBtn.disabled = true;
+		  status.textContent = "Sending...";
+
+		  try {
+			const res = await fetch("https://discordwebhookthing.sabisa-358.workers.dev", {
+			  method: "POST",
+			  headers: {
+				"Content-Type": "application/json"
+			  },
+			  body: JSON.stringify({ name, message })
+			});
+
+			const text = await res.text();
+
+			if (!res.ok) {
+			  status.textContent = "error: " + text;
+			} else {
+			  status.textContent = "yu have speaked into the speak receptor so now ur mesasge in the discor server, u cn get banned btw";
+			  document.getElementById("messageInput").value = "";
+			}
+		  } catch (err) {
+			console.error(err);
+			status.textContent = "network error";
+		  } finally {
+			sendBtn.disabled = false;
+		  }
+		});
+		</script>
+
+
+
+<hr>
+      <a name="contact"></a>
+      <font  size="4"><b>Contact Information</b></font>
+      <p>
+        <font size="2">
+          <b>Email:</b> sabisaguy@gmail.com<br>
+          <b>Discord:</b> .sabisa.<br>
+		  <b>Discord server:</b> <br>
+          i respond imediatly        </font>      </p>    </td>
+    <td width="86%">&nbsp;</td>
+  </tr>
+</table>
+
+	</div>
+
+<hr width="90%">
+
+
+  <font face="Arial" size="1">
+    © 1932 BOTER DOG ENTERPRISES, INC.<br>
+    best viewed with eyes<br>
+  </font>
+</center>
+
+</body>
 </html>
+
