@@ -44,7 +44,9 @@ fetch("https://discord.com/api/guilds/1444195211449340070/widget.json")
   document.getElementById("discord-widget").innerHTML = h;
 });
 </script>
-		<br>bots removed*      </font>    </td>
+		<br>bots removed*  <br>    
+		<a href="https://discord.gg/2SndKkpJ3v" target="_blank">pleb join seber</a></font>    </td>
+		
 
     <td width="86%">
       <a name="about"></a>
@@ -160,6 +162,23 @@ fetch("https://discord.com/api/guilds/1444195211449340070/widget.json")
     best viewed with eyes<br>
   </font>
 </center>
+<script>
+(function () {
+  function detectDarkReader() {
+    const hasDRStyle = [...document.querySelectorAll("style")]
+      .some(s => s.textContent && s.textContent.toLowerCase().includes("darkreader"));
+    const test = document.createElement("div");
+    test.style.backgroundColor = "#ffffff";
+    test.style.display = "none";
+    document.body.appendChild(test);
+    const bg = getComputedStyle(test).backgroundColor;
+    document.body.removeChild(test);
+    const colorChanged = bg !== "rgb(255, 255, 255)";
+    return hasDRStyle || colorChanged;
+  }
+  if (detectDarkReader()) {alert("ples disable dark reader, it break bakground");}
+})();
+</script>
 
 </body>
 </html>
