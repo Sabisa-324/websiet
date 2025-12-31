@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta charset="UTF-8">
   <title>BOTER DOG ENTERPRICES INC</title>
 	<!--mstheme--><link rel="stylesheet" href="sky1111.css">
 	<meta name="Microsoft Theme" content="sky 1111">
@@ -87,46 +88,83 @@ fetch("https://discord.com/api/guilds/1444195211449340070/widget.json")
 		<hr>
 		<a name="reviews"></a>
 		<center>
-		<font size="5"><b>reviews from employees/customers/random people </b></font><br>
+		  <font size="5"><b>reviews from employees/customers/random people</b></font><br>
 
-		<div style="display:inline-block; text-align:center; font-family: 'Dancing Script', cursive; margin:20px;">
-	
-			<div style="position:relative; width:180px; margin:auto;">
+		  <div id="reviews-container" style="
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			gap: 60px 40px; 
+			margin: 30px auto;
+			max-width: 10000px; 
+		">
+		</div>
+		</center>
 
-			  <div style="
-				position:absolute;
-				top:40%; 
-				left:50%;
-				transform:translate(-50%, -50%);
-				width:140px;
-				height:140px;
-				background:white;
-				border-radius:50%;
-				box-shadow: 
-				  0 10px 60px 30px rgba(255,255,255,0.9),
-				  0 0 100px 50px rgba(255,255,255,0.6),
-				  0 0 140px 80px rgba(255,255,255,0.4),
-				  0 0 200px 120px rgba(255,255,255,0.2);
-				z-index:1;
-			  "></div>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
 
-			  <img src="https://cdn.discordapp.com/avatars/935405825244168213/7fd4ec7fb39eff8333bb343d79091e8e.webp?size=1024" 
-				   style="width:180px; height:180px; display:block; position:relative; z-index:2; ">
+		<script>
+		fetch("reviews.json")
+		  .then(res => res.json())
+		  .then(reviews => {
+			const container = document.getElementById("reviews-container");
+			reviews.forEach(r => {
+			  const card = document.createElement("div");
+			  card.style = "display:inline-block; text-align:center; font-family:'Dancing Script', cursive; margin:20px;";
 
-			  <img src="wings.png" 
-				   style="position:absolute; top:80px; left:50%; transform:translateX(-50%); width:290px; height:auto; z-index:0; opacity:0.8;">
-			</div>
+			  const wingsHtml = r.angelic 
+				? `<img src="wings.png" style="position:absolute; top:80px; left:50%; transform:translateX(-50%); width:290px; height:auto; z-index:0; opacity:0.8;">` 
+				: "";
+			  
+			  const glowHtml = r.angelic 
+				? `<div style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); width:140px; height:140px; background:white; border-radius:50%; box-shadow: 0 10px 60px 30px rgba(255,255,255,0.9), 0 0 100px 50px rgba(255,255,255,0.6); z-index:1;"></div>` 
+				: "";
 
-			<style>
-			@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap');
-			</style>
-			<div style="margin-top:50px; padding:0 10px; font-family: 'Dancing Script', cursive;">
-			  <p style="font-size:30px; line-height:1.4; color:#333; margin:0;">
-				“thi website is website dat gretest and u shoul dis an dat”
-			  </p>
-			  <i style="color:#555; display:block; margin-top:6px;">— stockman50</i>
-			</div>
-			</center>
+			  card.innerHTML = `
+			  <div style="position:relative; width:180px; height:180px; margin:auto;">
+				<img src="${r.avatar}" style="
+				  width:180px; 
+				  height:180px; 
+				  object-fit:cover; 
+				  border-radius:50%; 
+				  display:block; 
+				  position:relative; 
+				  z-index:2;
+				">
+				
+				${r.angelic ? `
+				  <img src="wings.png" style="position:absolute; top:80px; left:50%; transform:translateX(-50%); width:290px; height:auto; z-index:0; opacity:0.8;">
+				  
+				  <div style="
+					position:absolute;
+					top:0;
+					left:0;
+					width:180px;
+					height:180px;
+					background:white;
+					border-radius:50%;
+					box-shadow: 
+					  0 0 60px 30px rgba(255,255,255,0.8),
+					  0 0 100px 50px rgba(255,255,255,0.4);
+					z-index:1;
+				  "></div>
+				` : ''}
+			  </div>
+
+			  <div style="margin-top:50px; padding:0 10px;">
+				<p style="font-size:25px; line-height:1.4; color:#333; margin:0;">&ldquo;${r.message}&rdquo;</p>
+				<i style="color:#555; display:block; margin-top:6px;">— ${r.name}</i>
+			  </div>
+			`;
+			  container.appendChild(card);
+			});
+		  })
+		  .catch(err => console.error(err));
+		</script>
+
+
 
 
 
