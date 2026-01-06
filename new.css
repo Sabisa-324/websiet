@@ -1,0 +1,80 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-image: url("upscale.png");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  font-family: Times New Roman, serif;
+}
+center {
+  background: linear-gradient(
+    to right,
+    rgba(0, 213, 255, 0.256),
+    rgba(255, 255, 255, 0.50),
+    rgba(106, 163, 216, 0.5)
+  );
+  width: 94%;
+  margin: 20px auto;
+  padding: 20px;
+  border: 2px solid #6aa3d8;
+}
+
+table {
+  background: transparent;
+}
+
+td {
+  vertical-align: top;
+}
+
+a {
+  color: #003399;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+hr {
+  border: none;
+  height: 2px;
+  background: linear-gradient(to right, #0000ff, #ffffff, #0000ff);
+}
+
+input, textarea {
+  border: 1px solid #6aa3d8;
+  padding: 4px;
+  font-family: Arial, sans-serif;
+}
+
+button {
+  border: 1px solid #6aa3d8;
+  background: #d9ecff;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #bcdcff;
+}
+
+#discord-widget {
+  background-image:
+    linear-gradient(
+      rgba(0, 145, 255, 0.8),
+      rgba(0, 145, 255, 0.7)
+    ),
+    url("discord.png");
+  background-size: 200%;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 10px;
+  width: 140px;
+  height: 300px;
+  border: 3px solid #00fbff;
+}
